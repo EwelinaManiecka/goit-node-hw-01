@@ -44,10 +44,11 @@ async function addContact(name, email, phone) {
   try {
     const data = await fs.readFile(contactsPath);
     const dataParse = JSON.parse(data);
+    const contactIndex = Number(dataParse[dataParse.length - 1].id) + 1;
     const addData = [
       ...dataParse,
       {
-        id: (data.length + 1).toString(),
+        id: `${contactIndex}`,
         name,
         email,
         phone,
